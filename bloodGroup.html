@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Group Compatibility</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('/bg 2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .container {
+      text-align: center;
+      background-color: transparent;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      width: 80%;
+      max-width: 300px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .blood-groups {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .blood-group {
+      cursor: pointer;
+      padding: 10px;
+      border: 1px solid #131314;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      margin: 5px;
+      flex: 1 1 30%;
+      text-align: center;
+      font-weight: bolder;
+    }
+    .blood-group:hover {
+      background-color: #e9ecef;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    @media (max-width: 600px) {
+      .blood-group {
+        flex: 1 1 45%;
+      }
+    }
+    @media (max-width: 400px) {
+      .blood-group {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Blood Group Compatibility</h1>
+    <div class="blood-groups">
+      <div class="blood-group" onclick="showCompatibility('A+')">A+</div>
+      <div class="blood-group" onclick="showCompatibility('A-')">A-</div>
+      <div class="blood-group" onclick="showCompatibility('B+')">B+</div>
+      <div class="blood-group" onclick="showCompatibility('B-')">B-</div>
+      <div class="blood-group" onclick="showCompatibility('AB+')">AB+</div>
+      <div class="blood-group" onclick="showCompatibility('AB-')">AB-</div>
+      <div class="blood-group" onclick="showCompatibility('O+')">O+</div>
+      <div class="blood-group" onclick="showCompatibility('O-')">O-</div>
+    </div>
+    <div class="result">
+      <h2 id="selected-group"></h2>
+      <p id="donate"></p>
+      <p id="receive"></p>
+    </div>
+  </div>
+
+  <script>
+    const bloodGroupCompatibility = {
+      'A+': { donate: ['A+', 'AB+'], receive: ['A+', 'A-', 'O+', 'O-'] },
+      'A-': { donate: ['A+', 'A-', 'AB+', 'AB-'], receive: ['A-', 'O-'] },
+      'B+': { donate: ['B+', 'AB+'], receive: ['B+', 'B-', 'O+', 'O-'] },
+      'B-': { donate: ['B+', 'B-', 'AB+', 'AB-'], receive: ['B-', 'O-'] },
+      'AB+': { donate: ['AB+'], receive: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'] },
+      'AB-': { donate: ['AB+', 'AB-'], receive: ['A-', 'B-', 'AB-', 'O-'] },
+      'O+': { donate: ['A+', 'B+', 'AB+', 'O+'], receive: ['O+', 'O-'] },
+      'O-': { donate: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'], receive: ['O-'] },
+    };
+
+    function showCompatibility(bloodGroup) {
+      const compatibility = bloodGroupCompatibility[bloodGroup];
+      document.getElementById('selected-group').textContent = `Blood Group: ${bloodGroup}`;
+      document.getElementById('donate').textContent = `Can donate to: ${compatibility.donate.join(', ')}`;
+      document.getElementById('receive').textContent = `Can receive from: ${compatibility.receive.join(', ')}`;
+    }
+  </script>
+</body>
+</html>
