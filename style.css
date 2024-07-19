@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('/bg 2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .container {
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    width: 80%;
+    max-width: 300px;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
+  .blood-groups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  .blood-group {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #131314;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin: 5px;
+    flex: 1 1 30%;
+    text-align: center;
+    font-weight: bolder;
+  }
+  .blood-group:hover {
+    background-color: #e9ecef;
+  }
+  .result {
+    margin-top: 20px;
+  }
+  @media (max-width: 600px) {
+    .blood-group {
+      flex: 1 1 45%;
+    }
+  }
+  @media (max-width: 400px) {
+    .blood-group {
+      flex: 1 1 100%;
+    }
+  }
